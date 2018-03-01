@@ -1,14 +1,15 @@
 #app {
   margin: 10px 5px 10px 5px;
 }
-.container {
-  width: 400px;
-  height: 400px;
-  margin: 0 0 20px 0;
+.custom-row {
+  min-height: 75px;
 }
 .button {
   width: 200px;
 }
 .margin-left {
   margin-left: 30px;
+}
+.custom-p {
+  height:75px;
 }
