@@ -7,14 +7,20 @@ new Vue({
   },
 	computed: {
 		output: function() {
-			console.log('computed')
 			this.result_icon = this.counter > 5 ? 'keyboard_arrow_right' : 'keyboard_arrow_left'
 			return this.counter > 5 ? '> 5' : '< 5'
 		}
 	},
+	watch: {
+		counter: function(value) {
+			var vm = this
+			setTimeout(function() {
+				vm.counter = 0
+			}, 3000)
+		}
+	},
 	methods: {
 		result: function() {
-			console.log('methods')
 			this.result_icon = this.counter > 5 ? 'keyboard_arrow_right' : 'keyboard_arrow_left'
 			return this.counter > 5 ? '> 5' : '< 5'
 		}
