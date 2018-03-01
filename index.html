@@ -15,15 +15,39 @@
 <body>
   <div id="app">
     <v-app>
-      <v-btn color="info" @click="counter++" class="button">Increase</v-btn>
-      <v-btn color="info" @click="counter--" class="button">Decrease</v-btn>
-      <v-btn color="info" @click="secondCounter++" class="button">Increase Second</v-btn>
-      <p>{{ counter }} | {{ secondCounter }}</p>
-      <p>{{ result() }} | {{ output }}</p>
-      <p>
-        <v-icon medium>folder_open</v-icon>
-        <v-icon medium>{{ result_icon }}</v-icon> {{ counter }}
-      </p>
+      <div
+        class="demo"
+        @click="attachRed = !attachRed"
+        :class="{ red: attachRed }"></div>
+      <div
+        class="demo"
+        @click="attachGreen = !attachGreen"
+        :class="{ green: attachGreen }"></div>
+      <div
+        class="demo"
+        @click="attachBlue = !attachBlue"
+        :class="{ blue: attachBlue }"></div>
+      <div class="demo demo-progress">
+          <v-progress-circular
+          v-if="attachTeal"
+          @click="incrementProgress"
+          :size="80"
+          :width="15"
+          :rotate="360"
+          :value="progress"
+          color="teal">
+          {{ progress }}
+        </v-progress-circular>
+        <v-progress-circular
+          v-if="!attachTeal"
+          @click="incrementProgress"
+          :size="80"
+          :width="15"
+          :rotate="360"
+          :value="progress">
+          {{ progress }}
+        </v-progress-circular>
+      </div>
     </v-app>
   </div>
   <script src="app.js"></script>
