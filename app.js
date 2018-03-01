@@ -1,20 +1,16 @@
 new Vue({
 	el: '#app',
   data: {
-  	greeting: 'Hello World!'
+  	title: 'Hello World!',
+		link: {
+			href: 'http://google.com',
+			name: 'Google'
+		}
   },
   methods: {
-  	changeGreeting: function(event) {
-      // console.log(event)
-      console.log(event.target.value)
-      if (event.target.value == '') {
-        // console.log('event.target.value == \'\'')
-        this.greeting = 'Hello World!'
-      }
-      else {
-        // console.log('else')
-        this.greeting = event.target.value
-      }
-    }
+  	sayHello: function() {
+			this.title = 'Hello!'
+			return this.title
+		}
   }
 })
