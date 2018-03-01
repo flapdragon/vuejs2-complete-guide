@@ -5,7 +5,8 @@ new Vue({
 		link: {
 			href: 'http://google.com',
 			name: 'Google'
-		}
+		},
+		finishedLink: '<a href="http://www.google.com">Google<a/>'
   },
   methods: {
   	sayHello: function() {

@@ -4,18 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <!-- <link rel="icon" type="image/png" href="beard-and-sunglasses-silhouette-16-265162.png"> -->
-  <!-- <link rel="icon" type="image/x-icon" href="favicon.ico"> -->
-  <!-- <link rel="icon" type="image/x-icon" href="http://127.0.0.1:8080/favicon.ico"> -->
-  <!-- <link rel="icon" href="/favicon.ico"> -->
   <title>Document</title>
-  <!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script> -->
   <script src="lib/vue.js"></script>
 </head>
 <body>
   <div id="app">
     <h1 v-once>{{ title }}</h1>
     <p>{{ sayHello() }} - <a v-bind:href="link.href">{{ link.name }}</a></p>
+    <hr />
+    <p v-html="finishedLink"></p>
   </div>
   <script src="app.js"></script>
 </body>
