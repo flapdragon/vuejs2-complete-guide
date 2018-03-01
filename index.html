@@ -15,16 +15,13 @@
 <body>
   <div id="app">
     <v-app>
-      <v-form v-model="valid">
-        <v-text-field
-          label="Name"
-          v-model="name"
-          :rules="nameRules"
-          required
-        ></v-text-field>
-      </v-form>
+      <v-btn color="info" v-on:click="counter++" class="button">Increase</v-btn>
+      <v-btn color="info" v-on:click="counter--" class="button">Decrease</v-btn>
+      <p>{{ counter }}</p>
+      <p>{{ result() }}</p>
       <p>
-        {{ name }}
+        <v-icon medium>folder_open</v-icon>
+        <v-icon medium>{{ result_icon }}</v-icon> {{ counter }}
       </p>
     </v-app>
   </div>
