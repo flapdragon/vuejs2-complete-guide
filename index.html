@@ -30,7 +30,10 @@
           </v-flex>
           <v-flex xs12 class="custom-row">
             <v-card dark color="primary">
-              <p v-on:mousemove="updateCoordinates" class="custom-p">Coordinates: {{ x }} / {{ y }}</p>
+              <p v-on:mousemove="updateCoordinates" class="custom-p">
+                Coordinates: {{ x }} / {{ y }}
+                - <span v-on:mousemove.stop><v-icon large color="grey lighten-1">mood_bad</v-icon></span>
+              </p>
             </v-card>
           </v-flex>
         </v-layout>
