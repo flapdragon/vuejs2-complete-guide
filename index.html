@@ -2,15 +2,35 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
+  <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' rel="stylesheet">
+  <link href="lib/vuetify.min.css" rel="stylesheet">
+  <link href="app.css" rel="stylesheet">
   <script src="lib/vue.js"></script>
+  <script src="lib/vuetify.js"></script>
 </head>
 <body>
   <div id="app">
-    <button v-on:click="increase">Click me</button>
-    <p>{{ counter }}</p>
+    <v-app>
+      <v-container grid-list-md text-xs-center>
+        <v-layout row wrap>
+          <v-flex xs6>
+            <v-btn color="info" v-on:click="increase" class="button">Click me</v-btn>
+          </v-flex>
+          <v-flex xs6>
+            <div class="text-xs-left margin-left">
+              <v-badge>
+                <span slot="badge">{{ counter }}</span>
+                <v-icon large color="grey lighten-1">credit_card</v-icon>
+              </v-badge>
+            </div>
+          </v-flex>
+        </v-layout>
+      </v-container>
+    </v-app>
   </div>
   <script src="app.js"></script>
 </body>
