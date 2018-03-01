@@ -15,9 +15,9 @@
 <body>
   <div id="app">
     <v-app>
-      <v-btn color="info" v-on:click="counter++" class="button">Increase</v-btn>
-      <v-btn color="info" v-on:click="counter--" class="button">Decrease</v-btn>
-      <v-btn color="info" v-on:click="secondCounter++" class="button">Increase Second</v-btn>
+      <v-btn color="info" @click="counter++" class="button">Increase</v-btn>
+      <v-btn color="info" @click="counter--" class="button">Decrease</v-btn>
+      <v-btn color="info" @click="secondCounter++" class="button">Increase Second</v-btn>
       <p>{{ counter }} | {{ secondCounter }}</p>
       <p>{{ result() }} | {{ output }}</p>
       <p>
