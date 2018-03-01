@@ -36,6 +36,11 @@
               </p>
             </v-card>
           </v-flex>
+          <v-flex xs12 class="custom-row">
+            <v-card dark color="primary">
+              <input type="text" v-on:keyup.enter="consoleMe" class="input-normal" />
+            </v-card>
+          </v-flex>
         </v-layout>
       </v-container>
     </v-app>
