@@ -4,19 +4,10 @@ new Vue({
 		attachRed: false,
 		attachGreen: false,
 		attachBlue: false,
-		attachTeal: false,
-		progress: 0
+		color: 'green'
   },
 	methods: {
-		incrementProgress: function() {
-			this.attachTeal = !this.attachTeal
-			if (this.progress < 100) {
-				this.progress += 20
-			}
-			else {
-				this.progress = 0
-			}
-		}
+
 	},
 	computed: {
 		divClasses: function() {

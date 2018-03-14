@@ -17,36 +17,26 @@
       <div
         class="demo"
         @click="attachRed = !attachRed"
-        :class="divClasses"></div>
+        :class="{red: attachRed}"></div>
       <div
         class="demo"
-        @click="attachGreen = !attachGreen"
-        :class="divClasses"></div>
+        :class="[color, {red: attachRed}]"></div>
       <div
         class="demo"
-        @click="attachBlue = !attachBlue"
-        :class="{ blue: attachBlue }"></div>
-      <div class="demo demo-progress">
-          <v-progress-circular
-          v-if="attachTeal"
-          @click="incrementProgress"
-          :size="80"
-          :width="15"
-          :rotate="360"
-          :value="progress"
-          color="teal">
-          {{ progress }}
-        </v-progress-circular>
-        <v-progress-circular
-          v-if="!attachTeal"
-          @click="incrementProgress"
-          :size="80"
-          :width="15"
-          :rotate="360"
-          :value="progress">
-          {{ progress }}
-        </v-progress-circular>
-      </div>
+        :class="[color, {red: attachRed}]"></div>
+      <input type="text" v-model="color" />
+      <v-container fluid>
+        <v-layout row>
+          <v-flex xs12>
+            <v-text-field
+              name="input-1"
+              label="Label Text"
+              id="testing"
+                v-model="color"
+            ></v-text-field>
+          </v-flex>
+        </v-layout>
+      </v-container>
     </v-app>
   </div>
   <script src="app.js"></script>
