@@ -17,5 +17,13 @@ new Vue({
 				this.progress = 0
 			}
 		}
+	},
+	computed: {
+		divClasses: function() {
+			return {
+				red: this.attachRed,
+				green: !this.attachRed
+			}
+		}
 	}
 })
