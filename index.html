@@ -14,36 +14,25 @@
 <body>
   <div id="app">
     <v-app>
-      <p v-if="show">
-        You can see me! <span>Me too!</span>
-      </p>
-      <p v-else>
-        Now you see me!
-      </p>
-      <template v-if="show">
-        <h1>Heading</h1>
-        <p>
-          Inside a template!
-        </p>
-      </template>
-      <p v-show="show">
-        Do you also see me?
-      </p>
-      <button @click="show = !show">Switch</button>
-      <v-container fluid class="pa-0">
-        <v-layout row wrap>
-          <v-flex xs12 sm3>
-            <v-btn-toggle v-model="eye">
-              <v-btn icon @click="toggleEye()">
-                <v-icon>visibility</v-icon>
-              </v-btn>
-            </v-btn-toggle>
-            <!-- <v-btn icon v-if="!show" @click="show = !show">
-              <v-icon>visibility</v-icon>
-            </v-btn> -->
-          </v-flex>
-        </v-layout>
-      </v-container>
+      <ul>
+        <li v-for="ingredient in ingredients">
+          {{ ingredient }}
+        </li>
+      </ul>
+      <v-layout row>
+        <v-flex xs12 sm6 offset-sm3>
+          <v-list>
+            <v-list-tile avatar v-for="ingredient in ingredients" :key="ingredient" @click="">
+              <v-list-tile-action>
+                <v-icon color="pink">kitchen</v-icon>
+              </v-list-tile-action>
+              <v-list-tile-content>
+                <v-list-tile-title v-text="ingredient"></v-list-tile-title>
+              </v-list-tile-content>
+            </v-list-tile>
+          </v-list>
+        </v-flex>
+      </v-layout>
     </v-app>
   </div>
   <script src="app.js"></script>

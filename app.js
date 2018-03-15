@@ -1,18 +1,10 @@
 new Vue({
 	el: '#app',
   data: {
-		show: true,
-		eye: 0
-  },
-	methods: {
-		toggleEye: function() {
-			this.show = !this.show
-			if (this.eye === 0) {
-				this.eye = null
-			}
-			else {
-				this.eye = 0
-			}
-		}
-	}
+		ingredients: [ 'meat', 'fruit', 'cookies' ],
+		persons: [
+			{ name: 'Max', age: 27, color: 'red' },
+			{ name: 'Anna', age: 'unknown', color: 'blue' }
+		]
+  }
 })
