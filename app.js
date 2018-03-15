@@ -6,8 +6,13 @@ new Vue({
     gameIsRunning: false
   },
   methods: {
-    setGameIsRunning: function() {
-      this.gameIsRunning = !this.gameIsRunning
+    startGame: function() {
+      this.gameIsRunning = true
+      this.playHealth = 100
+      this.monsterHealth = 100
+    },
+    stopGame: function() {
+      this.gameIsRunning = false
     }
   }
 })
