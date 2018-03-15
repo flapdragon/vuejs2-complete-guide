@@ -11,9 +11,6 @@ new Vue({
       this.playerHealth = 100
       this.monsterHealth = 100
     },
-    stopGame: function() {
-      this.gameIsRunning = false
-    },
     attack: function() {
       this.monsterHealth -= this.calculateDamage(3, 10)
       if (this.checkWin()) {
@@ -41,7 +38,7 @@ new Vue({
       this.monsterAttack()
     },
     giveUp: function() {
-
+      this.gameIsRunning = false
     },
     monsterAttack: function() {
       this.playerHealth -= this.calculateDamage(5, 12)
