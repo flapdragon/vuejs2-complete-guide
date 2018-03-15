@@ -94,17 +94,15 @@
             <v-flex xs6>
               <v-card dark color="blue" :class="{'card-disabled': !gameIsRunning}">
                 <v-progress-linear
-                  value="playerHealth"
+                  v-model="playerHealth"
                   height="20"
                   color="red"
-                  background-color="blue-grey">
-                  {{ playerHealth }}
-                </v-progress-linear>
+                  background-color="blue-grey"></v-progress-linear>
               </v-card>
             </v-flex>
             <v-flex xs6>
               <v-card dark color="deep-orange" :class="{'card-disabled': !gameIsRunning}">
-                <v-progress-linear value="monsterHealth" height="20" color="red" background-color="blue-grey">{{ monsterHealth }}</v-progress-linear>
+                <v-progress-linear v-model="monsterHealth" height="20" color="red" background-color="blue-grey"></v-progress-linear>
               </v-card>
             </v-flex>
             <v-flex xs12>
@@ -113,7 +111,7 @@
                   Attack
                   <v-icon right>pan_tool</v-icon>
                 </v-btn>
-                <v-btn dark color="orange">
+                <v-btn dark color="orange" @click="specialAttack">
                   Special Attack
                   <v-icon right>whatshot</v-icon>
                 </v-btn>
