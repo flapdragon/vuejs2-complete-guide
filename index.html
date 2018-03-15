@@ -22,7 +22,9 @@
           :style="myStyle"
         ></div>
       <div
-        class="demo"></div>
+        class="demo"
+        v-bind:style="[myStyle, {height: width + 'px'}]"
+        ></div>
       <input type="text" v-model="color" />
       <input type="text" v-model="width" />
       <v-container fluid>
