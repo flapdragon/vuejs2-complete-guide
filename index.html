@@ -3,8 +3,13 @@
 <head>
     <title>Monster Slayer</title>
     <script src="lib/vue.js"></script>
+    <script src="lib/vuetify.js"></script>
+    <script defer src="lib/fontawesome-all.js"></script>
     <link rel="stylesheet" href="css/foundation.min.css">
     <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons'>
+    <link rel="stylesheet" href="lib/vuetify.min.css">
+    <link rel="stylesheet" href="css/fa-svg-with-js.css">
 </head>
 <body>
 <div id="app">
@@ -48,6 +53,66 @@
             </ul>
         </div>
     </section>
+    <br />
+    <template>
+      <v-app>
+        <v-container grid-list-md text-xs-center>
+          <v-layout row wrap>
+            <!-- title -->
+            <v-flex xs6>
+              <v-card dark color="blue">
+                YOU
+              </v-card>
+            </v-flex>
+            <v-flex xs6>
+              <v-card dark color="deep-orange">
+                MONSTER
+              </v-card>
+            </v-flex>
+            <!-- health -->
+            <v-flex xs6>
+              <v-card dark color="blue">
+                <v-progress-linear value="80" height="20" color="red" background-color="blue-grey"></v-progress-linear>
+              </v-card>
+            </v-flex>
+            <v-flex xs6>
+              <v-card dark color="deep-orange">
+                <v-progress-linear value="80" height="20" color="red" background-color="blue-grey"></v-progress-linear>
+              </v-card>
+            </v-flex>
+            <v-flex xs12>
+              <v-card>
+                <v-btn dark color="success">
+                  Start New Game
+                  <i class="fab fa-fort-awesome button-fa"></i>
+                </v-btn>
+              </v-card>
+            </v-flex>
+            <v-flex xs12>
+              <v-card>
+                <v-btn dark color="red">
+                  Attack
+                  <v-icon right>pan_tool</v-icon>
+                </v-btn>
+                <v-btn dark color="orange">
+                  Special Attack
+                  <v-icon right>whatshot</v-icon>
+                </v-btn>
+                <v-btn dark color="success">
+                  Heal
+                  <i class="fas fa-heart button-fa"></i>
+                </v-btn>
+                <v-btn dark color="grey">
+                  Give Up
+                  <v-icon right>directions_run</v-icon>
+                </v-btn>
+              </v-card>
+            </v-flex>
+          </v-layout>
+          </v-layout>
+        </v-container>
+      </v-app>
+    </template>
 </div>
 <script src="app.js"></script>
 </body>
