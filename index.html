@@ -1,53 +1,54 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
-  <link rel="stylesheet" href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons'>
-  <link rel="stylesheet" href="lib/vuetify.min.css">
-  <link rel="stylesheet" href="app.css">
-  <script src="lib/vue.js"></script>
-  <script src="lib/vuetify.js"></script>
+    <title>Monster Slayer</title>
+    <script src="lib/vue.js"></script>
+    <link rel="stylesheet" href="css/foundation.min.css">
+    <link rel="stylesheet" href="css/app.css">
 </head>
 <body>
-  <div id="app">
-    <v-app>
-      <ul>
-        <li v-for="(ingredient, index) in ingredients" :key="ingredient">
-          {{ ingredient }} ({{ index }})
-        </li>
-      </ul>
-      <button @click="ingredients.push('spices')">Add New</button>
-      <hr />
-      <ul>
-        <li v-for="person in persons">
-          <div v-for="(value, key, index) in person">{{ key }}: {{ value }} ({{ index }})</div>
-        </li>
-      </ul>
-      <span v-for="n in 10">{{ n }}</span>
-      <hr />
-      <template v-for="(ingredient, index) in ingredients">
-        <h1>{{ ingredient }}</h1>
-        <p>{{ index }}</p>
-      </template>
-      <v-layout row>
-        <v-flex xs12 sm6 offset-sm3>
-          <v-list>
-            <v-list-tile avatar v-for="(ingredient, index) in ingredients" :key="ingredient" @click="">
-              <v-list-tile-action>
-                <v-icon color="pink">kitchen</v-icon>
-              </v-list-tile-action>
-              <v-list-tile-content>
-                <v-list-tile-title>{{ ingredient }} ({{ index }})</v-list-tile-title>
-              </v-list-tile-content>
-            </v-list-tile>
-          </v-list>
-        </v-flex>
-      </v-layout>
-    </v-app>
-  </div>
-  <script src="app.js"></script>
+<div id="app">
+    <section class="row">
+        <div class="small-6 columns">
+            <h1 class="text-center">YOU</h1>
+            <div class="healthbar">
+                <div class="healthbar text-center" style="background-color: green; margin: 0; color: white;">
+
+                </div>
+            </div>
+        </div>
+        <div class="small-6 columns">
+            <h1 class="text-center">MONSTER</h1>
+            <div class="healthbar">
+                <div class="healthbar text-center" style="background-color: green; margin: 0; color: white;">
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="row controls">
+        <div class="small-12 columns">
+            <button id="start-game">START NEW GAME</button>
+        </div>
+    </section>
+    <section class="row controls">
+        <div class="small-12 columns">
+            <button id="attack">ATTACK</button>
+            <button id="special-attack">SPECIAL ATTACK</button>
+            <button id="heal">HEAL</button>
+            <button id="give-up">GIVE UP</button>
+        </div>
+    </section>
+    <section class="row log">
+        <div class="small-12 columns">
+            <ul>
+                <li>
+
+                </li>
+            </ul>
+        </div>
+    </section>
+</div>
+<script src="app.js"></script>
 </body>
 </html>
