@@ -16,23 +16,33 @@
     <v-app>
       <div
         class="demo"
-        @click="attachRed = !attachRed"
-        :class="{red: attachRed}"></div>
+        :style="{backgroundColor: color}"></div>
       <div
         class="demo"
-        :class="[color, {red: attachRed}]"></div>
+          :style="myStyle"
+        ></div>
       <div
-        class="demo"
-        :class="[color, {red: attachRed}]"></div>
+        class="demo"></div>
       <input type="text" v-model="color" />
+      <input type="text" v-model="width" />
       <v-container fluid>
         <v-layout row>
           <v-flex xs12>
             <v-text-field
               name="input-1"
-              label="Label Text"
-              id="testing"
+              label="Color"
+              id="inputColor"
                 v-model="color"
+            ></v-text-field>
+          </v-flex>
+        </v-layout>
+        <v-layout row>
+          <v-flex xs12>
+            <v-text-field
+              name="input-1"
+              label="Width"
+              id="inputWidth"
+              v-model="width"
             ></v-text-field>
           </v-flex>
         </v-layout>
