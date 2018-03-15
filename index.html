@@ -17,16 +17,22 @@
         <div class="small-6 columns">
             <h1 class="text-center">YOU</h1>
             <div class="healthbar">
-                <div class="healthbar text-center" style="background-color: green; margin: 0; color: white;">
-
+                <div
+                  class="healthbar text-center"
+                  style="background-color: green; margin: 0; color: white;"
+                  :style="{width: playerHealth + '%'}">
+                  {{ playerHealth }}
                 </div>
             </div>
         </div>
         <div class="small-6 columns">
             <h1 class="text-center">MONSTER</h1>
             <div class="healthbar">
-                <div class="healthbar text-center" style="background-color: green; margin: 0; color: white;">
-
+                <div
+                  class="healthbar text-center"
+                  style="background-color: green; margin: 0; color: white;"
+                  :style="{width: monsterHealth + '%'}">
+                  {{ monsterHealth }}
                 </div>
             </div>
         </div>
@@ -72,12 +78,18 @@
             <!-- health -->
             <v-flex xs6>
               <v-card dark color="blue">
-                <v-progress-linear value="80" height="20" color="red" background-color="blue-grey"></v-progress-linear>
+                <v-progress-linear
+                  value="playerHealth"
+                  height="20"
+                  color="red"
+                  background-color="blue-grey">
+                  {{ playerHealth }}
+                </v-progress-linear>
               </v-card>
             </v-flex>
             <v-flex xs6>
               <v-card dark color="deep-orange">
-                <v-progress-linear value="80" height="20" color="red" background-color="blue-grey"></v-progress-linear>
+                <v-progress-linear value="monsterHealth" height="20" color="red" background-color="blue-grey">{{ monsterHealth }}</v-progress-linear>
               </v-card>
             </v-flex>
             <v-flex xs12>
