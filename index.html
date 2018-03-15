@@ -15,19 +15,19 @@
   <div id="app">
     <v-app>
       <ul>
-        <li v-for="ingredient in ingredients">
-          {{ ingredient }}
+        <li v-for="(ingredient, index) in ingredients">
+          {{ ingredient }} ({{ index }})
         </li>
       </ul>
       <v-layout row>
         <v-flex xs12 sm6 offset-sm3>
           <v-list>
-            <v-list-tile avatar v-for="ingredient in ingredients" :key="ingredient" @click="">
+            <v-list-tile avatar v-for="(ingredient, index) in ingredients" :key="ingredient" @click="">
               <v-list-tile-action>
                 <v-icon color="pink">kitchen</v-icon>
               </v-list-tile-action>
               <v-list-tile-content>
-                <v-list-tile-title v-text="ingredient"></v-list-tile-title>
+                <v-list-tile-title>{{ ingredient }} ({{ index }})</v-list-tile-title>
               </v-list-tile-content>
             </v-list-tile>
           </v-list>
