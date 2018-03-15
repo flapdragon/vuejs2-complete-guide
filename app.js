@@ -1,17 +1,17 @@
 new Vue({
 	el: '#app',
   data: {
-		color: 'gray',
-		width: 100
+		show: true,
+		eye: 0
   },
 	methods: {
-
-	},
-	computed: {
-		myStyle: function() {
-			return {
-				backgroundColor: this.color,
-				width: this.width + 'px'
+		toggleEye: function() {
+			this.show = !this.show
+			if (this.eye === 0) {
+				this.eye = null
+			}
+			else {
+				this.eye = 0
 			}
 		}
 	}

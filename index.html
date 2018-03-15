@@ -14,38 +14,27 @@
 <body>
   <div id="app">
     <v-app>
-      <div
-        class="demo"
-        :style="{backgroundColor: color}"></div>
-      <div
-        class="demo"
-          :style="myStyle"
-        ></div>
-      <div
-        class="demo"
-        v-bind:style="[myStyle, {height: width + 'px'}]"
-        ></div>
-      <input type="text" v-model="color" />
-      <input type="text" v-model="width" />
-      <v-container fluid>
-        <v-layout row>
-          <v-flex xs12>
-            <v-text-field
-              name="input-1"
-              label="Color"
-              id="inputColor"
-                v-model="color"
-            ></v-text-field>
-          </v-flex>
-        </v-layout>
-        <v-layout row>
-          <v-flex xs12>
-            <v-text-field
-              name="input-1"
-              label="Width"
-              id="inputWidth"
-              v-model="width"
-            ></v-text-field>
+      <p v-if="show">
+        You can see me! <span>Me too!</span>
+      </p>
+      <p v-else>
+        Now you see me!
+      </p>
+      <p>
+        Do you also see me?
+      </p>
+      <button @click="show = !show">Switch</button>
+      <v-container fluid class="pa-0">
+        <v-layout row wrap>
+          <v-flex xs12 sm3>
+            <v-btn-toggle v-model="eye">
+              <v-btn icon @click="toggleEye()">
+                <v-icon>visibility</v-icon>
+              </v-btn>
+            </v-btn-toggle>
+            <!-- <v-btn icon v-if="!show" @click="show = !show">
+              <v-icon>visibility</v-icon>
+            </v-btn> -->
           </v-flex>
         </v-layout>
       </v-container>

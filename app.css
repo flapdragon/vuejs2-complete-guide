@@ -1,28 +1,12 @@
 #app {
   margin: 10px 5px 10px 5px;
 }
-.custom-row {
-  min-height: 75px;
-}
-.button {
-  width: 200px;
-}
-.margin-left {
-  margin-left: 30px;
-}
-.custom-p {
-  height:75px;
-}
-
 .demo {
   width: 100px;
   height: 100px;
   background-color: gray;
   display: inline-block;
   margin: 10px;
-}
-.demo-progress {
-  padding: 10px 0 0 10px;
 }
 .red {
   background-color: red;
