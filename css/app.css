@@ -95,3 +95,6 @@ button {
 .button-fa {
   margin-left: 16px;
 }
+.card-disabled {
+  opacity: .7;
+}

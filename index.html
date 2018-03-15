@@ -37,12 +37,12 @@
             </div>
         </div>
     </section>
-    <section class="row controls">
+    <section class="row controls" v-if="!gameIsRunning">
         <div class="small-12 columns">
             <button id="start-game">START NEW GAME</button>
         </div>
     </section>
-    <section class="row controls">
+    <section class="row controls" v-else>
         <div class="small-12 columns">
             <button id="attack">ATTACK</button>
             <button id="special-attack">SPECIAL ATTACK</button>
@@ -64,20 +64,33 @@
       <v-app>
         <v-container grid-list-md text-xs-center>
           <v-layout row wrap>
+            <!-- start new game -->
+            <v-flex xs12>
+              <v-card :class="{'card-disabled': gameIsRunning}">
+                <v-btn
+                  color="success"
+                  :disabled="gameIsRunning"
+                  :class="[{'white--text': gameIsRunning }]"
+                  @click.native="setGameIsRunning">
+                  Start New Game
+                  <i class="fab fa-fort-awesome button-fa"></i>
+                </v-btn>
+              </v-card>
+            </v-flex>
             <!-- title -->
             <v-flex xs6>
-              <v-card dark color="blue">
+              <v-card dark color="blue" :class="{'card-disabled': !gameIsRunning}">
                 YOU
               </v-card>
             </v-flex>
             <v-flex xs6>
-              <v-card dark color="deep-orange">
+              <v-card dark color="deep-orange" :class="{'card-disabled': !gameIsRunning}">
                 MONSTER
               </v-card>
             </v-flex>
             <!-- health -->
             <v-flex xs6>
-              <v-card dark color="blue">
+              <v-card dark color="blue" :class="{'card-disabled': !gameIsRunning}">
                 <v-progress-linear
                   value="playerHealth"
                   height="20"
@@ -88,20 +101,12 @@
               </v-card>
             </v-flex>
             <v-flex xs6>
-              <v-card dark color="deep-orange">
+              <v-card dark color="deep-orange" :class="{'card-disabled': !gameIsRunning}">
                 <v-progress-linear value="monsterHealth" height="20" color="red" background-color="blue-grey">{{ monsterHealth }}</v-progress-linear>
               </v-card>
             </v-flex>
             <v-flex xs12>
-              <v-card>
-                <v-btn dark color="success">
-                  Start New Game
-                  <i class="fab fa-fort-awesome button-fa"></i>
-                </v-btn>
-              </v-card>
-            </v-flex>
-            <v-flex xs12>
-              <v-card>
+              <v-card :class="{'card-disabled': !gameIsRunning}">
                 <v-btn dark color="red">
                   Attack
                   <v-icon right>pan_tool</v-icon>
@@ -114,7 +119,10 @@
                   Heal
                   <i class="fas fa-heart button-fa"></i>
                 </v-btn>
-                <v-btn dark color="grey">
+                <v-btn
+                  dark
+                  color="grey"
+                  @click.native="setGameIsRunning">
                   Give Up
                   <v-icon right>directions_run</v-icon>
                 </v-btn>
