@@ -19,6 +19,10 @@
           {{ ingredient }} ({{ index }})
         </li>
       </ul>
+      <template v-for="(ingredient, index) in ingredients">
+        <h1>{{ ingredient }}</h1>
+        <p>{{ index }}</p>
+      </template>
       <v-layout row>
         <v-flex xs12 sm6 offset-sm3>
           <v-list>
