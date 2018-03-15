@@ -20,6 +20,12 @@
       <p v-else>
         Now you see me!
       </p>
+      <template v-if="show">
+        <h1>Heading</h1>
+        <p>
+          Inside a template!
+        </p>
+      </template>
       <p>
         Do you also see me?
       </p>
