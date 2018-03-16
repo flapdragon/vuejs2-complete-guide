@@ -30,7 +30,14 @@ new Vue({
 
     },
     specialAttack: function() {
-      this.monsterHealth -= this.calculateDamage(10, 20)
+      // damage
+      var damage = this.calculateDamage(10, 20)
+      this.monsterHealth -= damage
+      // add to turns
+      this.turns.unshift({
+        isPlayer: true,
+        text: 'Player hits Monster hard for ' + damage
+      })
       if (this.checkWin()) {
         return
       }
@@ -38,12 +45,18 @@ new Vue({
       this.monsterAttack()
     },
     heal: function() {
+      // heal
       if (this.playerHealth <= 90) {
         this.playerHealth += 10
       }
       else {
         this.playHealth = 100
       }
+      // add to turns
+      this.turns.unshift({
+        isPlayer: true,
+        text: 'Player heals for 10'
+      })
       this.monsterAttack()
     },
     giveUp: function() {
