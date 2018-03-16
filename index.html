@@ -1,158 +1,21 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Monster Slayer</title>
-    <script src="lib/vue.js"></script>
-    <script src="lib/vuetify.js"></script>
-    <script defer src="lib/fontawesome-all.js"></script>
-    <link rel="stylesheet" href="css/foundation.min.css">
-    <link rel="stylesheet" href="css/app.css">
-    <link rel="stylesheet" href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons'>
-    <link rel="stylesheet" href="lib/vuetify.min.css">
-    <link rel="stylesheet" href="css/fa-svg-with-js.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="lib/vue.js"></script>
 </head>
 <body>
-<div id="app">
-    <section class="row">
-        <div class="small-6 columns">
-            <h1 class="text-center">YOU</h1>
-            <div class="healthbar">
-                <div
-                  class="healthbar text-center"
-                  style="background-color: green; margin: 0; color: white;"
-                  :style="{width: playerHealth + '%'}">
-                  {{ playerHealth }}
-                </div>
-            </div>
-        </div>
-        <div class="small-6 columns">
-            <h1 class="text-center">MONSTER</h1>
-            <div class="healthbar">
-                <div
-                  class="healthbar text-center"
-                  style="background-color: green; margin: 0; color: white;"
-                  :style="{width: monsterHealth + '%'}">
-                  {{ monsterHealth }}
-                </div>
-            </div>
-        </div>
-    </section>
-    <section class="row controls" v-if="!gameIsRunning">
-        <div class="small-12 columns">
-            <button
-              id="start-game"
-              @click="startGame">START NEW GAME</button>
-        </div>
-    </section>
-    <section class="row controls" v-else>
-        <div class="small-12 columns">
-            <button id="attack" @click="attack">ATTACK</button>
-            <button id="special-attack" @click="specialAttack">SPECIAL ATTACK</button>
-            <button id="heal" @click="heal">HEAL</button>
-            <button id="give-up" @click="giveUp">GIVE UP</button>
-        </div>
-    </section>
-    <section class="row log" v-if="gameIsRunning && turns.length > 0">
-        <div class="small-12 columns">
-            <ul>
-                <li
-                  v-for="turn in turns"
-                  :class="{'player-turn': turn.isPlayer, 'monster-turn': !turn.isPlayer}">
-                  {{ turn.text }}
-                </li>
-            </ul>
-        </div>
-    </section>
-    <br />
-    <template>
-      <v-app>
-        <v-container grid-list-md text-xs-center>
-          <v-layout row wrap>
-            <!-- start new game -->
-            <v-flex xs12>
-              <v-card :class="{'card-disabled': gameIsRunning}">
-                <v-btn
-                  color="success"
-                  :disabled="gameIsRunning"
-                  :class="[{'white--text': gameIsRunning }]"
-                  @click="startGame">
-                  Start New Game
-                  <i class="fab fa-fort-awesome button-fa"></i>
-                </v-btn>
-              </v-card>
-            </v-flex>
-            <!-- title -->
-            <v-flex xs6>
-              <v-card dark color="blue" :class="{'card-disabled': !gameIsRunning}">
-                YOU
-              </v-card>
-            </v-flex>
-            <v-flex xs6>
-              <v-card dark color="deep-orange" :class="{'card-disabled': !gameIsRunning}">
-                MONSTER
-              </v-card>
-            </v-flex>
-            <!-- health -->
-            <v-flex xs6>
-              <v-card dark color="blue" :class="{'card-disabled': !gameIsRunning}">
-                <v-progress-linear
-                  v-model="playerHealth"
-                  height="20"
-                  color="red"
-                  background-color="blue-grey"></v-progress-linear>
-              </v-card>
-            </v-flex>
-            <v-flex xs6>
-              <v-card dark color="deep-orange" :class="{'card-disabled': !gameIsRunning}">
-                <v-progress-linear v-model="monsterHealth" height="20" color="red" background-color="blue-grey"></v-progress-linear>
-              </v-card>
-            </v-flex>
-            <v-flex xs12>
-              <v-card :class="{'card-disabled': !gameIsRunning}">
-                <v-btn dark color="red" @click="attack">
-                  Attack
-                  <v-icon right>pan_tool</v-icon>
-                </v-btn>
-                <v-btn dark color="orange" @click="specialAttack">
-                  Special Attack
-                  <v-icon right>whatshot</v-icon>
-                </v-btn>
-                <v-btn dark color="success" @click="heal">
-                  Heal
-                  <i class="fas fa-heart button-fa"></i>
-                </v-btn>
-                <v-btn
-                  dark
-                  color="grey"
-                  @click.native="giveUp">
-                  Give Up
-                  <v-icon right>directions_run</v-icon>
-                </v-btn>
-              </v-card>
-            </v-flex>
-            <v-flex xs12>
-              <v-card :class="{'card-disabled': !gameIsRunning}">
-                <v-list>
-                  <v-list-tile v-for="turn in turns" :key="turn.title">
-                    <v-list-tile-action>
-                      <!-- <i v-if="turn.isPlayer" class="far fa-smile"></i>
-                      <i v-else class="fas fa-bug"></i> -->
-                      <v-icon v-if="turn.isPlayer" right color="blue">face</v-icon>
-                      <v-icon v-else right color="deep-orange">bug_report</v-icon>
-                    </v-list-tile-action>
-                    <v-list-tile-content>
-                      <v-list-tile-title :class="{'turn-text-blue': turn.isPlayer, 'turn-text-deep-orange': !turn.isPlayer}">{{ turn.text }}</v-list-tile-title>
-                    </v-list-tile-content>
-                  </v-list-tile>
-                </v-list>
-              </v-card>
-            </v-flex>
-          </v-layout>
-          </v-layout>
-        </v-container>
-      </v-app>
-    </template>
-</div>
-<script src="app.js"></script>
+  <div id="app1">
+    <h1 ref="heading">{{ title }}</h1>
+    <button v-on:click="show">Show Paragraph</button>
+    <p v-if="showParagraph">This is not always visible</p>
+  </div>
+  <div id="app2">
+    <h1 ref="heading">{{ title }}</h1>
+  </div>
+  <script src="app.js"></script>
 </body>
 </html>
