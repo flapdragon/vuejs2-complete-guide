@@ -4,7 +4,6 @@ var data = {
 }
 
 var vm1 = new Vue({
-  el: '#app1',
   data: data,
   methods: {
     show: function() {
@@ -13,7 +12,6 @@ var vm1 = new Vue({
       this.$refs.myButton.innerText = 'Test'
     },
     updateTitle: function(title) {
-      console.log('updateTitle')
       this.title = title
     }
   },
@@ -24,23 +22,25 @@ var vm1 = new Vue({
   },
   watch: {
     title: function(value) {
-      alert('Title changed, new value: ' + value);
+      alert('Title changed, new value: ' + value)
     }
   }
 })
 
+vm1.$mount('#app1')
+
 console.log(vm1.$data === data)
-vm1.$refs.heading.innerText = 'Something else!'
+vm1.$refs.heading.innerText = 'Something else'
 
 setTimeout(function() {
-  // vm1.title = 'Changed by Timer with native JS!'
+  vm1.title = 'Changed by Timer'
   vm1.show()
 }, 3000)
 
 var vm2 = new Vue({
   el: '#app2',
   data: {
-    title: 'The second instance'
+    title: 'The second Instance'
   },
   methods: {
     onChange: function() {
