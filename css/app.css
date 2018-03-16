@@ -98,3 +98,9 @@ button {
 .card-disabled {
   opacity: .66;
 }
+.turn-text-blue {
+  color: #2196F3;
+}
+.turn-text-deep-orange {
+  color: #FF5722;
+}
