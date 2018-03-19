@@ -3,7 +3,7 @@ import Vue from 'vue'
 
 // var data = { status: 'Critical' }
 
-Vue.component('my-cmp', {
+var cmp1 = {
   data: function() {
     return {
       status: 'Critical'
@@ -15,8 +15,18 @@ Vue.component('my-cmp', {
       this.status = 'Normal'
     }
   }
+}
+
+new Vue({
+  el: '#app1',
+  components: {
+    'my-cmp': cmp1
+  }
 })
 
 new Vue({
-  el: '#app'
+  el: '#app2',
+  components: {
+
+  }
 })
