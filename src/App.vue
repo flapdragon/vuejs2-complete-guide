@@ -3,7 +3,7 @@
     <app-header></app-header>
     <hr />
     <div class="row">
-      <servers></servers>
+      <app-servers></app-servers>
       <app-server-details></app-server-details>
     </div>
     <hr />
@@ -19,9 +19,9 @@ import ServerDetails from './components/Server/ServerDetails'
 
 export default {
   components: {
-    appHeader: Header,
+    'app-header': Header,
     'app-footer': Footer,
-    Servers,
+    'app-servers': Servers,
     'app-server-details': ServerDetails
   }
 }
