@@ -3,16 +3,20 @@
     <h1>The User Component</h1>
     <p>I'm an awesome User!</p>
     <button @click="changeName">Change My Name</button>
-    <p>Name is {{ myName }}</p>
+    <p>Name is {{ userName }}</p>
     <hr>
     <div class="row">
       <div class="col-xs-12 col-sm-6">
-        <app-user-detail :myName="myName"
+        <app-user-detail :userName="userName"
           :resetFn="resetName"
+          :userAge="userAge"
           ></app-user-detail>
       </div>
       <div class="col-xs-12 col-sm-6">
-        <app-user-edit></app-user-edit>
+        <app-user-edit
+            :userAge="userAge"
+            @ageWasEdited="userAge = $event"
+            ></app-user-edit>
       </div>
     </div>
   </div>
@@ -22,21 +26,21 @@
   import UserDetail from './UserDetail.vue'
   import UserEdit from './UserEdit.vue'
 
-  const myNameDefault = 'David'
+  const userNameDefault = 'David'
 
   export default {
     data: function() {
       return {
-        myName: myNameDefault
+        userName: userNameDefault,
+        userAge: 80
       }
     },
     methods: {
       changeName() {
-        this.myName = 'Abby'
+        this.userName = 'Abby'
       },
       resetName() {
-        console.log('User.vue, resetName')
-        this.myName = myNameDefault
+        this.userName = userNameDefault
       }
     },
     components: {

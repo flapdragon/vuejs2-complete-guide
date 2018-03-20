@@ -3,6 +3,7 @@
     <h3>You may view the User Details here</h3>
     <p>Many Details</p>
     <p>User Name: {{ reverseName() }}</p>
+    <p>User Age: {{ userAge }}</p>
     <button @click="resetFn()">Reset Name</button>
   </div>
 </template>
@@ -10,20 +11,23 @@
 <script>
 export default {
   props: {
-    myName: {
+    userName: {
       type: String,
       required: true
     },
     resetFn: {
       type: Function
+    },
+    userAge: {
+      type: Number
     }
   },
   methods: {
     reverseName() {
-      return this.myName.split("").reverse().join("")
+      return this.userName.split("").reverse().join("")
     },
     resetName() {
-      this.myName = 'David'
+      this.userName = 'David'
     }
   }
 }
