@@ -3,10 +3,11 @@
     <h1>The User Component</h1>
     <p>I'm an awesome User!</p>
     <button @click="changeName">Change My Name</button>
+    <p>Name is {{ myName }}</p>
     <hr>
     <div class="row">
       <div class="col-xs-12 col-sm-6">
-        <app-user-detail :myName="myName"></app-user-detail>
+        <app-user-detail :myName="myName" @nameWasReset="myName = $event"></app-user-detail>
       </div>
       <div class="col-xs-12 col-sm-6">
         <app-user-edit></app-user-edit>
