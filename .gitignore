@@ -62,3 +62,6 @@ lib/
 
 # Application build folder
 dist/
+
+# Operating system files
+.DS_Store
