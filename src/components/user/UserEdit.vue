@@ -11,3 +11,27 @@
     </p>
   </div>
 </template>
+
+<script>
+  export default {
+    data () {
+      return {
+        confirmed: false
+      }
+    },
+    methods: {
+
+    },
+    beforeRouteLeave (to, from, next) {
+      if (this.confirmed) {
+        next()
+      } else {
+        if (confirm('Are you sure?')) {
+          next()
+        } else {
+          next(false)
+        }
+      }
+    }
+  }
+</script>
