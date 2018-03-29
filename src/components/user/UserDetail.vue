@@ -24,6 +24,11 @@
           hash: '#data'
         }
       }
+    },
+    beforeRouteEnter (to, from, next) {
+      // Component is not loaded yet
+      console.log('you can also perform the before enter logic in the component itself')
+      next()
     }
   }
 </script>
