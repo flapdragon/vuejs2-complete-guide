@@ -1,61 +1,135 @@
 <template>
     <div class="container">
+        <form>
+            <div class="row">
+                <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+                    <h1>File a Complaint</h1>
+                    <hr>
+                    <div class="form-group">
+                        <label for="email">Mail</label>
+                        <input
+                                type="text"
+                                id="email"
+                                class="form-control"
+                                v-model="email">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input
+                                type="password"
+                                id="password"
+                                class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="age">Age</label>
+                        <input
+                                type="number"
+                                id="age"
+                                class="form-control">
+                    </div>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 form-group">
+                    <label for="message">Message</label><br>
+                    <!-- Interpolation between <textarea>{{ test }}</textarea> doesn't work!-->
+                    <textarea
+                            id="message"
+                            rows="5"
+                            class="form-control"></textarea>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+                    <div class="form-group">
+                        <label for="sendmail">
+                            <input
+                                    type="checkbox"
+                                    id="sendmail"
+                                    value="SendMail"> Send Mail
+                        </label>
+                        <label for="sendInfomail">
+                            <input
+                                    type="checkbox"
+                                    id="sendInfomail"
+                                    value="SendInfoMail"> Send Infomail
+                        </label>
+                    </div>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 form-group">
+                    <label for="male">
+                        <input
+                                type="radio"
+                                id="male"
+                                value="Male"> Male
+                    </label>
+                    <label for="female">
+                        <input
+                                type="radio"
+                                id="female"
+                                value="Female"> Female
+                    </label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 from-group">
+                    <label for="priority">Priority</label>
+                    <select
+                            id="priority"
+                            class="form-control">
+                        <option></option>
+                    </select>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+                    <button
+                            class="btn btn-primary">Submit!
+                    </button>
+                </div>
+            </div>
+        </form>
+        <hr>
         <div class="row">
             <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
-                <h1>Routing</h1>
-                <hr />
-                <router-view name="header-top"></router-view>
-                <transition name="slide" mode="out-in">
-                  <router-view></router-view>
-                </transition>
-                <router-view name="header-bottom"></router-view>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4>Your Data</h4>
+                    </div>
+                    <div class="panel-body">
+                        <p>Mail: {{ email }}</p>
+                        <p>Password:</p>
+                        <p>Age:</p>
+                        <p>Message: </p>
+                        <p><strong>Send Mail?</strong></p>
+                        <ul>
+                            <li></li>
+                        </ul>
+                        <p>Gender:</p>
+                        <p>Priority:</p>
+                        <p>Switched:</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </template>
 
 <script>
-  import Header from './components/Header.vue'
-
-  export default {
-    components: {
-      appHeader: Header
+    export default {
+      data () {
+        return {
+          email: ''
+        }
+      }
     }
-  }
 </script>
 
-<style scoped>
-  .slide-leave-active {
-    transition: opacity 1s ease;
-    opacity: 0;
-    animation: slide-out 1s ease-out forwards;
-  }
-
-  .slide-leave {
-    opacity: 1;
-    transform: translateX(0)
-  }
-
-  .slide-enter-active {
-    animation: slide-in 1s ease-out forwards;
-  }
-
-  @keyframes slide-out {
-    0% {
-      transform: translateY(0);
-    }
-    100% {
-      transform: translateY(-30px);
-    }
-  }
-
-  @keyframes slide-in {
-    0% {
-      transform: translateY(-30px)
-    }
-    100% {
-      transform: translateY(0);
-    }
-  }
+<style>
 
 </style>
