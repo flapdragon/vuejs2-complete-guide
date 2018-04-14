@@ -7,6 +7,7 @@
           {{ text | toUppercase | to-lowercase }}
         </p>
         <hr />
+        <button @click="fruits.push('Raspberry')">Add New Fruit</button>
         <input v-model="filterText" />
         <ul>
            <li v-for="fruit in filteredFruits">{{ fruit }}</li>
