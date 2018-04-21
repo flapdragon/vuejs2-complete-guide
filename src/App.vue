@@ -18,6 +18,18 @@
 </template>
 
 <script>
+  import * as firebase from "firebase"
+
+  const config = {
+    apiKey: "AIzaSyC2Aq_OUntc9cyT-v7Hma5IRwEdpMRFj0Q",
+    authDomain: "vuejs-http-e0ac7.firebaseapp.com",
+    databaseURL: "https://vuejs-http-e0ac7.firebaseio.com",
+    storageBucket: "vuejs-http-e0ac7.appspot.com"
+  }
+  firebase.initializeApp(config)
+  console.log(firebase)
+  // const database = firebase.database()
+
   export default {
     data() {
       return {
@@ -28,8 +40,25 @@
       }
     },
     methods: {
-      submit() {
-        console.log(this.user)
+      submit () {
+        if (this.user.username) {
+          console.log('$http')
+          // this.$http.post('https://vuejs-http-e0ac7.firebaseapp.com/users.json', this.user)
+          //   .then(response => {
+          //     console.log(response)
+          //   }, error => {
+          //     console.log(error)
+          //   })
+          const newUserKey = firebase.database().ref().child('users').push().key
+          console.log(newUserKey)
+          let updates = {}
+          updates['/users/' + newUserKey] = this.user
+          firebase.database().ref().update(updates)
+          // firebase.database().ref('users/' + newUserKey).set({
+          //   username: this.user.username,
+          //   email: this.user.email
+          // })
+        }
       }
     }
   }
