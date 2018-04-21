@@ -12,6 +12,20 @@
           <input class="form-control" type="text" v-model="user.email" />
         </div>
         <button class="btn btn-primary" @click="submit">Submit</button>
+        <hr />
+        <button class="btn btn-primary" @click="fetchDataLocal">Get Local Data</button>
+        <ul class="list-group">
+          <li class="list-group-item" v-for="u in usersLocal">
+            {{ u.username }} - {{ u.email }}
+          </li>
+        </ul>
+        <br /><br />
+        <button class="btn btn-primary" @click="fetchDataFirebase">Get Firebase Data</button>
+        <ul class="list-group">
+          <li class="list-group-item" v-for="u in usersFirebase">
+            {{ u.username }} - {{ u.email }}
+          </li>
+        </ul>
       </div>
     </div>
   </div>
@@ -36,7 +50,9 @@
         user: {
           username: '',
           email: ''
-        }
+        },
+        usersLocal: [],
+        usersFirebase: []
       }
     },
     methods: {
@@ -51,11 +67,11 @@
             })
 
           // New user
-          // const newUserKey = firebase.database().ref().child('users').push().key
-          // console.log(newUserKey)
-          // let updates = {}
-          // updates['/users/' + newUserKey] = this.user
-          // firebase.database().ref().update(updates)
+          const newUserKey = firebase.database().ref().child('users').push().key
+          console.log(newUserKey)
+          let updates = {}
+          updates['/users/' + newUserKey] = this.user
+          firebase.database().ref().update(updates)
 
           // Update user
           // firebase.database().ref('users/' + newUserKey).set({
@@ -63,6 +79,31 @@
           //   email: this.user.email
           // })
         }
+      },
+      fetchDataLocal () {
+        // vue-resource
+        this.$http.get('http://localhost:3000/firebase', this.user)
+          .then(response => {
+            console.log(response)
+            return response.json()
+          })
+          .then(data => {
+            console.log(data)
+            this.usersLocal = data
+          }, error => {
+            console.log(error)
+          })
+      },
+      fetchDataFirebase () {
+        return firebase.database().ref('/users').once('value')
+          .then(snapshot => {
+            const result = []
+            const data = snapshot.val()
+            for (let key in data) {
+              result.push(data[key])
+            }
+            this.usersFirebase = result
+          })
       }
     }
   }

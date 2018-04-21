@@ -11,9 +11,16 @@ app.use(bodyParser.json())
 
 app.get('/', (req, res) => res.send('Hello World!'))
 
-// POST method route
+// Firebase clone
+app.get('/firebase', function (req, res) {
+  const data = [
+    { "username": "aquatic", "email": "test1@test.com" },
+    { "username": "innocent", "email": "test2@test.com" },
+    { "username": "container", "email": "test3@test.com" }
+  ]
+  res.json(data)
+})
 app.post('/firebase', function (req, res) {
-  console.log('/firebase')
   console.log('req.body', req.body)
   res.send(req.body.username + ' added!')
 })
