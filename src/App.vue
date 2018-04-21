@@ -43,17 +43,21 @@
       submit () {
         if (this.user.username) {
           console.log('$http')
-          // this.$http.post('https://vuejs-http-e0ac7.firebaseapp.com/users.json', this.user)
-          //   .then(response => {
-          //     console.log(response)
-          //   }, error => {
-          //     console.log(error)
-          //   })
-          const newUserKey = firebase.database().ref().child('users').push().key
-          console.log(newUserKey)
-          let updates = {}
-          updates['/users/' + newUserKey] = this.user
-          firebase.database().ref().update(updates)
+          this.$http.post('http://localhost:3000/firebase', this.user)
+            .then(response => {
+              console.log(response)
+            }, error => {
+              console.log(error)
+            })
+
+          // New user
+          // const newUserKey = firebase.database().ref().child('users').push().key
+          // console.log(newUserKey)
+          // let updates = {}
+          // updates['/users/' + newUserKey] = this.user
+          // firebase.database().ref().update(updates)
+
+          // Update user
           // firebase.database().ref('users/' + newUserKey).set({
           //   username: this.user.username,
           //   email: this.user.email
