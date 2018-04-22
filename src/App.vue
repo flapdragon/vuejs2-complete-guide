@@ -59,7 +59,7 @@
       submit () {
         if (this.user.username) {
           console.log('$http')
-          this.$http.post('http://localhost:3000/firebase', this.user)
+          this.$http.post('', this.user)
             .then(response => {
               console.log(response)
             }, error => {
@@ -82,7 +82,7 @@
       },
       fetchDataLocal () {
         // vue-resource
-        this.$http.get('http://localhost:3000/firebase', this.user)
+        this.$http.get('', this.user)
           .then(response => {
             console.log(response)
             return response.json()
