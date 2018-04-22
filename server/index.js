@@ -21,7 +21,7 @@ app.get('/firebase', function (req, res) {
   res.json(data)
 })
 app.post('/firebase', function (req, res) {
-  console.log('req.body', req.body)
+  console.log('/firebase post', req.body)
   res.send(req.body.username + ' added!')
 })
 

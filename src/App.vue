@@ -41,8 +41,6 @@
     storageBucket: "vuejs-http-e0ac7.appspot.com"
   }
   firebase.initializeApp(config)
-  console.log(firebase)
-  // const database = firebase.database()
 
   export default {
     data() {
@@ -52,19 +50,21 @@
           email: ''
         },
         usersLocal: [],
-        usersFirebase: []
+        usersFirebase: [],
+        resource: {}
       }
     },
     methods: {
       submit () {
         if (this.user.username) {
-          console.log('$http')
-          this.$http.post('', this.user)
-            .then(response => {
-              console.log(response)
-            }, error => {
-              console.log(error)
-            })
+          console.log('if this.user.username')
+          // this.$http.post('firebase', this.user)
+          //   .then(response => {
+          //     console.log(response)
+          //   }, error => {
+          //     console.log(error)
+          //   })
+          this.resource.save({}, this.user)
 
           // New user
           const newUserKey = firebase.database().ref().child('users').push().key
@@ -82,7 +82,7 @@
       },
       fetchDataLocal () {
         // vue-resource
-        this.$http.get('', this.user)
+        this.$http.get('firebase', this.user)
           .then(response => {
             console.log(response)
             return response.json()
@@ -105,6 +105,9 @@
             this.usersFirebase = result
           })
       }
+    },
+    created () {
+      this.resource = this.$resource('firebase')
     }
   }
 </script>

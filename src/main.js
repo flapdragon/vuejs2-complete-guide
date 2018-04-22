@@ -4,12 +4,11 @@ import App from './App.vue'
 
 Vue.use(VueResource)
 
-Vue.http.options.root = 'http://localhost:3000/firebase'
+Vue.http.options.root = 'http://localhost:3000'
 Vue.http.interceptors.push((request, next) => {
-  console.log(request)
-  if (request.method === 'POST') {
-    request.method = 'PUT'
-  }
+  // if (request.method === 'POST') {
+  //   request.method = 'PUT'
+  // }
   next(response => {
     response.json = () => {
       return { messages: response.body }
