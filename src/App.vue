@@ -51,13 +51,13 @@
         },
         usersLocal: [],
         usersFirebase: [],
-        resource: {}
+        resource: {},
+        node: 'firebase'
       }
     },
     methods: {
       submit () {
         if (this.user.username) {
-          console.log('if this.user.username')
           // this.$http.post('firebase', this.user)
           //   .then(response => {
           //     console.log(response)
@@ -69,7 +69,6 @@
 
           // New user
           const newUserKey = firebase.database().ref().child('users').push().key
-          console.log(newUserKey)
           let updates = {}
           updates['/users/' + newUserKey] = this.user
           firebase.database().ref().update(updates)
@@ -83,16 +82,28 @@
       },
       fetchDataLocal () {
         // vue-resource
-        this.$http.get('firebase', this.user)
+        // this.$http.get('firebase', this.user)
+        //   .then(response => {
+        //     console.log(response)
+        //     return response.json()
+        //   })
+        //   .then(data => {
+        //     console.log(data)
+        //     this.usersLocal = data
+        //   }, error => {
+        //     console.log(error)
+        //   })
+        this.resource.getData({ node: this.node })
           .then(response => {
-            console.log(response)
             return response.json()
           })
           .then(data => {
-            console.log(data)
-            this.usersLocal = data
-          }, error => {
-            console.log(error)
+            const messages = data.messages
+            const result = []
+            for (let key in messages) {
+              result.push(messages[key])
+            }
+            this.usersLocal = result
           })
       },
       fetchDataFirebase () {
@@ -109,9 +120,10 @@
     },
     created () {
       const customActions = {
-        saveAlt: { method: 'POST', url: 'alternative' }
+        saveAlt: { method: 'POST', url: 'alternative' },
+        getData: { method: 'GET' }
       }
-      this.resource = this.$resource('firebase', {}, customActions)
+      this.resource = this.$resource('{node}', {}, customActions)
     }
   }
 </script>
