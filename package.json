@@ -9,9 +9,8 @@
   },
   "dependencies": {
     "bootstrap": "^3.3.7",
-    "firebase": "^4.12.1",
     "vue": "^2.0.1",
-    "vue-resource": "^1.5.0"
+    "vue-router": "^2.0.1"
   },
   "devDependencies": {
     "babel-core": "^6.0.0",
