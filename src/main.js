@@ -8,9 +8,13 @@ Vue.http.options.root = 'http://localhost:3000/firebase'
 Vue.http.interceptors.push((request, next) => {
   console.log(request)
   if (request.method === 'POST') {
-    request.method = 'PUT' // Great to know. Don't think you should ever do this.
+    request.method = 'PUT'
   }
-  next()
+  next(response => {
+    response.json = () => {
+      return { messages: response.body }
+    }
+  })
 })
 
 new Vue({
