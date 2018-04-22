@@ -25,4 +25,10 @@ app.post('/firebase', function (req, res) {
   res.send(req.body.username + ' added!')
 })
 
+// Alternative
+app.post('/alternative', function (req, res) {
+  console.log('/alternative post', req.body)
+  res.send(req.body.username + ' added!')
+})
+
 app.listen(3000, () => console.log('Example app listening on port 3000!'))

@@ -64,7 +64,8 @@
           //   }, error => {
           //     console.log(error)
           //   })
-          this.resource.save({}, this.user)
+          // this.resource.save({}, this.user)
+          this.resource.saveAlt(this.user)
 
           // New user
           const newUserKey = firebase.database().ref().child('users').push().key
@@ -107,7 +108,10 @@
       }
     },
     created () {
-      this.resource = this.$resource('firebase')
+      const customActions = {
+        saveAlt: { method: 'POST', url: 'alternative' }
+      }
+      this.resource = this.$resource('firebase', {}, customActions)
     }
   }
 </script>
