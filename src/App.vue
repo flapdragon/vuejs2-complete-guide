@@ -32,7 +32,7 @@
           return this.$store.getters.value
         },
         set (value) {
-          this.$store.dispatch('updatevalue', value)
+          this.$store.dispatch('updateValue', value)
         }
       }
     },
