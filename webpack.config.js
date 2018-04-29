@@ -28,6 +28,14 @@ module.exports = {
         options: {
           name: '[name].[ext]?[hash]'
         }
+      },
+      {
+        test: /\.scss$/,
+        use: [
+          'vue-style-loader',
+          'css-loader',
+          'sass-loader'
+        ]
       }
     ]
   },
@@ -58,7 +66,12 @@ if (process.env.NODE_ENV === 'production') {
       }
     }),
     new webpack.LoaderOptionsPlugin({
-      minimize: true
+      minimize: true,
+      vue: {
+        loaders: {
+          scss: 'style!css!sass'
+        }
+      }
     })
   ])
 }
