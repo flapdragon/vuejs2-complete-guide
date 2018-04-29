@@ -4,7 +4,7 @@
       <h1>Stocks</h1>
     </div>
     <div class="row">
-      <app-stock v-for="stock in stocks"></app-stock>
+      <app-stock v-for="stock in stocks" :stock="stock"></app-stock>
     </div>
   </div>
 </template>
