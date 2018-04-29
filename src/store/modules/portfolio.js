@@ -4,7 +4,7 @@ const state = {
 }
 
 const mutations = {
-  'BUY_STOCK' (state, { stockId, quantity, stockPrice }) => {
+  'BUY_STOCK' (state, { stockId, quantity, stockPrice }) {
     const record = state.stocks.find(element => element.id === stockId)
     if (record) {
       record.quantity += quantity
@@ -30,7 +30,7 @@ const mutations = {
 }
 
 const actions = {
-  sellStock: ({ commit }, order) {
+  sellStock: ({ commit }, order) => {
     commit('SELL_STOCK', order)
   }
 }
@@ -54,7 +54,7 @@ const getters = {
 
 export default {
   state,
-  mmutations,
+  mutations,
   actions,
   getters
 }

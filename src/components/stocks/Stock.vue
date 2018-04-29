@@ -7,8 +7,10 @@
     <div class="card-body">
       <h5 class="card-title">Special title treatment</h5>
       <!-- <p class="card-text">TEXT</p> -->
-      <input type="number" class="form-control" aria-describedby="quantityHelp" placeholder="Quantity" v-model="quantity" />
-      <button type="button" class="btn btn-success" @click="buyStock" :disabled="quantity <= 0 || !Number.isInteger(parseInt(quantity))">Buy</button>
+      <div class="form-inline">
+        <input type="number" class="form-control" aria-describedby="quantityHelp" placeholder="Quantity" v-model="quantity" />
+        <button type="button" class="btn btn-success" @click="buyStock" :disabled="quantity <= 0 || !Number.isInteger(parseInt(quantity))">Buy</button>
+      </div>
     </div>
   </div>
 </template>
@@ -41,7 +43,7 @@
           stockPrice: this.stock.price,
           quantity: parseInt(this.quantity)
         }
-        console.log(order)
+        this.$store.dispatch('buyStock', order)
         this.quantity = 0
       }
     }
@@ -51,5 +53,8 @@
 <style  scoped>
 .card {
   margin: 10px;
+}
+.btn {
+  margin-left: 10px;
 }
 </style>
