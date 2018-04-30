@@ -12,7 +12,7 @@
       </ul>
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <a class="nav-link" href="#">End Day</a>
+          <a class="nav-link" href="#" @click="endDay">End Day</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -32,10 +32,19 @@
 </template>
 
 <script>
+  import { mapActions } from 'vuex'
   export default {
     computed: {
       funds () {
         return this.$store.getters.funds
+      }
+    },
+    methods: {
+      ...mapActions([
+        'randomizeStocks'
+      ]),
+      endDay () {
+        this.randomizeStocks()
       }
     }
   }
