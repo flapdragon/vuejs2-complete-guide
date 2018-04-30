@@ -65,3 +65,6 @@ dist/
 
 # Operating system files
 .DS_Store
+
+# App specific config
+config.js

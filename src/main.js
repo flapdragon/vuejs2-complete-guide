@@ -2,12 +2,25 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import VueResource from 'vue-resource'
 
+import * as config from '../config'
+
 import App from './App.vue'
 import { routes } from './routes'
 import store from './store/store'
 
 Vue.use(VueRouter)
 Vue.use(VueResource)
+
+Vue.mixin({
+  data: function() {
+    return {
+      get FIREBASE_URL () {
+        return config.FIREBASE_URL
+      }
+    }
+  }
+})
+
 
 // Vue.http.options.root = 'https://my-firebase-url.firebaseio.com/'
 
