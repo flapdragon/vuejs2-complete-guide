@@ -24,7 +24,7 @@
           </div>
         </li>
         <li class="nav-item">
-          <a class="nav-link"><strong>Funds: {{ funds }}</strong></a>
+          <a class="nav-link"><strong>Funds: {{ funds | toUSD }}</strong></a>
         </li>
       </ul>
     </div>

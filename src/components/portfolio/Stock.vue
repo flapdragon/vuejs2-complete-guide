@@ -33,19 +33,6 @@
         return this.quantity > this.stock.quantity
       }
     },
-    filters: {
-      'toUSD' (value) {
-        if (typeof value !== "number") {
-          return value
-        }
-        const formatter = new Intl.NumberFormat('en-US', {
-          style: 'currency',
-          currency: 'USD',
-          minimumFractionDigits: 2
-        })
-        return formatter.format(value)
-      }
-    },
     methods: {
       ...mapActions({
         placeSellOrder: 'sellStock'

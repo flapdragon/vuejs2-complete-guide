@@ -26,19 +26,6 @@
         quantity: 0
       }
     },
-    filters: {
-      'toUSD' (value) {
-        if (typeof value !== "number") {
-          return value
-        }
-        const formatter = new Intl.NumberFormat('en-US', {
-          style: 'currency',
-          currency: 'USD',
-          minimumFractionDigits: 2
-        })
-        return formatter.format(value)
-      }
-    },
     methods: {
       buyStock () {
         const order = {
