@@ -5,11 +5,14 @@
       <small>(Price: {{ stock.price | toUSD }}) | Quantity: {{ stock.quantity }}</small>
     </div>
     <div class="card-body">
-      <h5 class="card-title">Special title treatment</h5>
+      <h5 class="card-title">
+        Total: {{ stock.price * quantity | toUSD }}
+        <span v-if="insufficientQuantity" class="badge badge-danger" title="Insufficient Stocks">!</span>
+      </h5>
       <!-- <p class="card-text">TEXT</p> -->
       <div class="form-inline">
-        <input type="number" class="form-control" aria-describedby="quantityHelp" placeholder="Quantity" v-model="quantity" />
-        <button type="button" class="btn btn-primary" @click="sellStock" :disabled="quantity <= 0 || !Number.isInteger(parseInt(quantity))">Sell</button>
+        <input type="number" class="form-control" aria-describedby="quantityHelp" placeholder="Quantity" v-model="quantity" :class="{ 'is-invalid': insufficientQuantity }" />
+        <button type="button" class="btn btn-primary" @click="sellStock" :disabled="quantity <= 0 || !Number.isInteger(parseInt(quantity)) || insufficientQuantity">Sell</button>
       </div>
     </div>
   </div>
@@ -17,11 +20,17 @@
 
 <script>
   import { mapActions } from 'vuex'
+
   export default {
     props: [ "stock" ],
     data () {
       return {
         quantity: 0
+      }
+    },
+    computed: {
+      insufficientQuantity () {
+        return this.quantity > this.stock.quantity
       }
     },
     filters: {

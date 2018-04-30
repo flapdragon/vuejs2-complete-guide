@@ -5,11 +5,14 @@
       <small>(Price: {{ stock.price | toUSD }})</small>
     </div>
     <div class="card-body">
-      <h5 class="card-title">Special title treatment</h5>
+      <h5 class="card-title">
+        Total: {{ stock.price * quantity | toUSD }}
+        <span v-if="insufficientFunds" class="badge badge-danger" title="Insufficient Funds">!</span>
+      </h5>
       <!-- <p class="card-text">TEXT</p> -->
       <div class="form-inline">
-        <input type="number" class="form-control" aria-describedby="quantityHelp" placeholder="Quantity" v-model="quantity" />
-        <button type="button" class="btn btn-success" @click="buyStock" :disabled="quantity <= 0 || !Number.isInteger(parseInt(quantity))">Buy</button>
+        <input type="number" class="form-control" aria-describedby="quantityHelp" placeholder="Quantity" v-model="quantity" :class="{ 'is-invalid': insufficientFunds }" />
+        <button type="button" class="btn btn-success" @click="buyStock" :disabled="quantity <= 0 || !Number.isInteger(parseInt(quantity)) || insufficientFunds">Buy</button>
       </div>
     </div>
   </div>
@@ -45,6 +48,14 @@
         }
         this.$store.dispatch('buyStock', order)
         this.quantity = 0
+      }
+    },
+    computed: {
+      funds () {
+        return this.$store.getters.funds
+      },
+      insufficientFunds () {
+        return this.quantity * this.stock.price > this.funds
       }
     }
   }
