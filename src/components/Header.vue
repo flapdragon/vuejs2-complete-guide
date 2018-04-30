@@ -19,7 +19,7 @@
             Save & Load
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown" :class="{ show: isDropdownOpen }">
-            <a class="dropdown-item" href="#">Save</a>
+            <a class="dropdown-item" href="#" @click="saveData">Save</a>
             <a class="dropdown-item" href="#">Load</a>
           </div>
         </li>
@@ -56,6 +56,15 @@
         console.log('toggleIsDropdownOpen')
         this.isDropdownOpen = !this.isDropdownOpen
         console.log(this.isDropdownOpen)
+      },
+      saveData () {
+        const firebaseURL = 'https://my-firebase-url.firebaseio.com/' // This doesn't work of course. I mean it might work but it isn't my actual firebase url because I don't want to store that in the repo.
+        const data = {
+          funds: this.$store.getters.funds,
+          stockPortfolio: this.$store.getters.stockPortfolio,
+          stocks: this.$store.getters.stocks
+        }
+        this.$http.put(`${firebaseURL}data.json`, data)
       }
     }
   }

@@ -9,7 +9,7 @@ import store from './store/store'
 Vue.use(VueRouter)
 Vue.use(VueResource)
 
-// Vue.http.options.root = 'https://someURL.firebaseio.com/'
+// Vue.http.options.root = 'https://my-firebase-url.firebaseio.com/'
 
 Vue.filter('toUSD', value => {
   if (typeof value !== 'number') {
