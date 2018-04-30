@@ -9,7 +9,7 @@
       <!-- <p class="card-text">TEXT</p> -->
       <div class="form-inline">
         <input type="number" class="form-control" aria-describedby="quantityHelp" placeholder="Quantity" v-model="quantity" />
-        <button type="button" class="btn btn-success" @click="sellStock" :disabled="quantity <= 0 || !Number.isInteger(parseInt(quantity))">Sell</button>
+        <button type="button" class="btn btn-primary" @click="sellStock" :disabled="quantity <= 0 || !Number.isInteger(parseInt(quantity))">Sell</button>
       </div>
     </div>
   </div>
@@ -38,16 +38,17 @@
       }
     },
     methods: {
-      ...mapActions([
-        'sellStock'
-      ]),
+      ...mapActions({
+        placeSellOrder: 'sellStock'
+      }),
       sellStock () {
         const order = {
           stockId: this.stock.id,
           stockPrice: this.stock.price,
           quantity: this.quantity
         }
-        this.sellStock()
+        this.placeSellOrder(order)
+        this.quantity = 0
       }
     }
   }
